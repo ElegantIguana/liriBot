@@ -9,6 +9,7 @@ var keys = require('./keys.js');
 var request = require('request');
 var twitter = require('twitter');
 var spotify = require('spotify');
+var Spotify = require('node-spotify-api');
 var client = new twitter(keys.twitterKeys);
 var fs = require('fs');
 
@@ -79,6 +80,7 @@ function showTweets(){
 function spotifySong(song){
   spotify.search({ type: 'track', query: song}, function(error, data){
     if(!error){
+      console.log(data);
       for(var i = 0; i < data.tracks.items.length; i++){
         var songData = data.tracks.items[i];
         //artist
